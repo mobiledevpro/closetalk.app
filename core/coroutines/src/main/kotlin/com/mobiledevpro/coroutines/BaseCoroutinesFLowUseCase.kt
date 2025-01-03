@@ -32,7 +32,7 @@ import kotlinx.coroutines.withContext
  * Created on Sep 12, 2022.
  *
  */
-abstract class BaseCoroutinesFLowUseCase<Results, in Params>(
+abstract class BaseCoroutinesFLowUseCase<in Params, Results>(
     executionDispatcher: CoroutineDispatcher
 ) : BaseUseCase(executionDispatcher) {
 

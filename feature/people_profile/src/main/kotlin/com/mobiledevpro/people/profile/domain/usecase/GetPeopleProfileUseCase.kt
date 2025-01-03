@@ -27,7 +27,7 @@ import kotlinx.coroutines.flow.flowOf
 
 class GetPeopleProfileUseCase(
 
-) : BaseCoroutinesFLowUseCase<PeopleProfile?, Int>(Dispatchers.IO) {
+) : BaseCoroutinesFLowUseCase<Int, PeopleProfile?>(Dispatchers.IO) {
 
     override suspend fun buildUseCaseFlow(params: Int?): Flow<PeopleProfile?> =
         params?.let { peopleProfileId ->

@@ -30,7 +30,7 @@ import kotlinx.coroutines.flow.flowOf
 
 class GetPeopleListUseCase(
 
-) : BaseCoroutinesFLowUseCase<List<PeopleProfile>, None>(Dispatchers.IO) {
+) : BaseCoroutinesFLowUseCase<None, List<PeopleProfile>>(Dispatchers.IO) {
 
     override suspend fun buildUseCaseFlow(params: None?): Flow<List<PeopleProfile>> {
         Log.d("testing", "buildUseCaseFlow: Thread - ${Thread.currentThread().name}")

@@ -28,7 +28,7 @@ import kotlinx.coroutines.withContext
  * Created on Sep 12, 2022.
  *
  */
-abstract class BaseCoroutinesUseCase<Results, in Params>(
+abstract class BaseCoroutinesUseCase<in Params, Results>(
     executionDispatcher: CoroutineDispatcher
 ) : BaseUseCase(executionDispatcher) {
 

@@ -28,7 +28,7 @@ import kotlinx.coroutines.flow.flowOf
 
 class GetUserProfileUseCase(
 
-) : BaseCoroutinesFLowUseCase<UserProfile, None>(Dispatchers.IO) {
+) : BaseCoroutinesFLowUseCase<None, UserProfile>(Dispatchers.IO) {
 
     override suspend fun buildUseCaseFlow(params: None?): Flow<UserProfile> =
         flowOf(fakeUser)

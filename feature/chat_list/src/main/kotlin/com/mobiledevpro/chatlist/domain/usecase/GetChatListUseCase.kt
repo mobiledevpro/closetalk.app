@@ -28,7 +28,7 @@ import kotlinx.coroutines.flow.flowOf
 
 class GetChatListUseCase(
 
-) : BaseCoroutinesFLowUseCase<List<Chat>, None>(Dispatchers.IO) {
+) : BaseCoroutinesFLowUseCase<None, List<Chat>>(Dispatchers.IO) {
 
     override suspend fun buildUseCaseFlow(params: None?): Flow<List<Chat>> =
         flowOf(fakeChatList)
