@@ -135,6 +135,8 @@ dependencies {
     androidTestImplementation(libs.firebase.crashlytics) {
         exclude(group = "com.google.firebase", module = "firebase-crashlytics")
     }
+
+    implementation(projects.feature.settingsCore)
 }
 
 

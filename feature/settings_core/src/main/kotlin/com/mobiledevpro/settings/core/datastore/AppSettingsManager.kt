@@ -23,5 +23,5 @@ import kotlinx.coroutines.flow.Flow
 interface AppSettingsManager {
     fun get(): Flow<AppSettings>
 
-    suspend fun update(settings: AppSettings)
+    suspend fun setDarkMode(isDarkMode: Boolean)
 }

@@ -17,9 +17,6 @@ import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
 private val LightColorScheme = lightColorScheme(
     primary = md_theme_light_primary,
@@ -135,7 +132,3 @@ fun AppTheme(
         }
     }
 }
-
-//TODO: it's temporary implementation. Dark mode value should be saved into preferences.
-val _darkModeState = MutableStateFlow(true)
-val darkModeState: StateFlow<Boolean> = _darkModeState.asStateFlow()

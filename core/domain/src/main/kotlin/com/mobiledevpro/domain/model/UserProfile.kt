@@ -27,8 +27,8 @@ import android.net.Uri
  */
 
 data class UserProfile(
-    val name : String,
-    val nickname: String,
+    val name: String = "",
+    val nickname: String = "",
     val status: Boolean = false,
     val photo : Uri = Uri.EMPTY
 )

@@ -15,29 +15,14 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.settings.core.usecase
+package com.mobiledevpro.app.di
 
-import com.mobiledevpro.coroutines.BaseCoroutinesUseCase
-import com.mobiledevpro.coroutines.None
-import com.mobiledevpro.settings.AppSettings
 import com.mobiledevpro.settings.core.datastore.AppSettingsManager
-import kotlinx.coroutines.Dispatchers
+import com.mobiledevpro.settings.core.datastore.ImplAppSettingsManager
+import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.module
 
-/**
- * Update general settings of the app
- *
- * Created on Jan 03, 2025.
- *
- */
-class UpdateSettingsUseCase(
-    private val settingsManager: AppSettingsManager
-) : BaseCoroutinesUseCase<AppSettings, None>(Dispatchers.IO) {
-
-    override suspend fun buildUseCase(params: AppSettings?): None =
-        params?.let { settings ->
-
-            settingsManager.update(settings)
-
-            None()
-        } ?: throw RuntimeException("App Settings not found")
+val coreModule = module {
+    singleOf(::ImplAppSettingsManager) { bind<AppSettingsManager>() }
 }

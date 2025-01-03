@@ -17,29 +17,35 @@
  */
 package com.mobiledevpro.settings.core.usecase
 
-import com.mobiledevpro.coroutines.BaseCoroutinesFLowUseCase
+import com.mobiledevpro.coroutines.BaseCoroutinesUseCase
 import com.mobiledevpro.coroutines.None
+import com.mobiledevpro.settings.AppSettings
 import com.mobiledevpro.settings.core.datastore.AppSettingsManager
 import com.mobiledevpro.settings.core.model.Settings
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.first
 
 /**
- * Use case to get the general settings of the app
+ * Update general settings of the app
  *
  * Created on Jan 03, 2025.
  *
  */
-class GetAppSettingsUseCase(
+class UpdateAppSettingsUseCase(
     private val settingsManager: AppSettingsManager
-) : BaseCoroutinesFLowUseCase<None, Settings>(Dispatchers.IO) {
+) : BaseCoroutinesUseCase<Settings, None>(Dispatchers.IO) {
 
-    override suspend fun buildUseCaseFlow(params: None?): Flow<Settings> =
-        settingsManager.get()
-            .map { appSettings ->
-                Settings(
-                    darkMode = appSettings.darkMode
-                )
-            }
+    override suspend fun buildUseCase(params: Settings?): None =
+        params?.let { settings ->
+            settingsManager.get()
+                .first()
+                .let { existingSettings: AppSettings ->
+
+                    if (existingSettings.darkMode != settings.darkMode)
+                        settingsManager.setDarkMode(settings.darkMode)
+
+                }
+            None()
+        } ?: throw RuntimeException("App Settings not found")
+
 }

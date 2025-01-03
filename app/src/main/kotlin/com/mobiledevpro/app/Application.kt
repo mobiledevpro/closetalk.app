@@ -20,6 +20,7 @@ package com.mobiledevpro.app
 import android.app.Application
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.mobiledevpro.app.di.coreModule
 import com.mobiledevpro.apptemplate.compose.BuildConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -36,7 +37,7 @@ class App : Application() {
             // Reference Android context
             androidContext(this@App)
             // Load common modules (feature modules will be loaded on demand)
-           // modules(myAppModules)
+            modules(coreModule)
         }
 
         //Stop sending crashes and analytics in debug mode

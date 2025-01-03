@@ -38,6 +38,9 @@ fun NavGraphBuilder.userProfileScreen(onNavigateTo: (Screen) -> Unit) {
 
         ProfileScreen(
             state = viewModel.uiState,
+            onDarkModeSwitched = { isDarkMode ->
+                viewModel.onDarkModeSwitched(isDarkMode)
+            },
             onNavigateToSubscription = {
                 onNavigateTo(Screen.Subscription)
             }

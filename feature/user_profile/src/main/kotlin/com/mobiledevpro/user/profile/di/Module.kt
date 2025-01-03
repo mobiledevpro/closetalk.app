@@ -17,6 +17,8 @@
  */
 package com.mobiledevpro.user.profile.di
 
+import com.mobiledevpro.settings.core.usecase.GetAppSettingsUseCase
+import com.mobiledevpro.settings.core.usecase.UpdateAppSettingsUseCase
 import com.mobiledevpro.user.profile.domain.usecase.GetUserProfileUseCase
 import com.mobiledevpro.user.profile.view.vm.ProfileViewModel
 import org.koin.core.module.dsl.scopedOf
@@ -35,5 +37,7 @@ val featureUserProfileModule = module {
     scope<ProfileViewModel> {
         viewModelOf(::ProfileViewModel)
         scopedOf(::GetUserProfileUseCase)
+        scopedOf(::GetAppSettingsUseCase)
+        scopedOf(::UpdateAppSettingsUseCase)
     }
 }

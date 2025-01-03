@@ -30,11 +30,12 @@ class ImplAppSettingsManager(
 
     override fun get(): Flow<AppSettings> = appSettings.data
 
-    override suspend fun update(settings: AppSettings) {
+    override suspend fun setDarkMode(isDarkMode: Boolean) {
         appSettings.updateData {
             it.toBuilder()
-                .setDarkMode(settings.darkMode)
+                .setDarkMode(isDarkMode)
                 .build()
         }
     }
+
 }

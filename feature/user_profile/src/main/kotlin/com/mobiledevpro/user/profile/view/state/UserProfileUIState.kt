@@ -18,6 +18,7 @@
 package com.mobiledevpro.user.profile.view.state
 
 import com.mobiledevpro.domain.model.UserProfile
+import com.mobiledevpro.settings.core.model.Settings
 import com.mobiledevpro.ui.state.UIState
 
 /**
@@ -30,7 +31,8 @@ sealed interface UserProfileUIState : UIState {
 
     data object Empty : UserProfileUIState
 
-    data class Success(val userProfile: UserProfile) : UserProfileUIState
+    data class Success(val userProfile: UserProfile? = null, val settings: Settings? = null) :
+        UserProfileUIState
 
     data class Fail(val throwable: Throwable) : UserProfileUIState
 }
