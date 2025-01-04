@@ -136,7 +136,7 @@ dependencies {
         exclude(group = "com.google.firebase", module = "firebase-crashlytics")
     }
 
-    implementation(projects.feature.settingsCore)
+    implementation(projects.feature.main)
 }
 
 

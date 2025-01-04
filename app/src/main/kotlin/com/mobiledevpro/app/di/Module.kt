@@ -17,12 +17,24 @@
  */
 package com.mobiledevpro.app.di
 
+import com.mobiledevpro.app.MainActivity
+import com.mobiledevpro.main.view.vm.MainViewModel
 import com.mobiledevpro.settings.core.datastore.AppSettingsManager
 import com.mobiledevpro.settings.core.datastore.ImplAppSettingsManager
+import com.mobiledevpro.settings.core.usecase.GetAppSettingsUseCase
 import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.scopedOf
 import org.koin.core.module.dsl.singleOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 val coreModule = module {
     singleOf(::ImplAppSettingsManager) { bind<AppSettingsManager>() }
+}
+
+val mainModule = module {
+    scope<MainActivity> {
+        viewModelOf(::MainViewModel)
+        scopedOf(::GetAppSettingsUseCase)
+    }
 }
