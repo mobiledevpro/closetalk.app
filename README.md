@@ -90,6 +90,9 @@ graph LR
     :core:ui["ui"]
     :core:di["di"]
     :core:domain["domain"]
+    :core:coroutines["coroutines"]
+    :core:util["util"]
+    :core:analytics["analytics"]
   end
   subgraph :feature
     :feature:home["home"]
@@ -98,6 +101,8 @@ graph LR
     :feature:chat_list["chat_list"]
     :feature:people["people"]
     :feature:user_profile["user_profile"]
+    :feature:people_list["people_list"]
+    :feature:people_profile["people_profile"]
   end
   :core:navigation --> :core:ui
   :core:navigation --> :core:di
@@ -108,10 +113,33 @@ graph LR
   :core:navigation --> :feature:chat_list
   :core:navigation --> :feature:people
   :core:navigation --> :feature:user_profile
+  :feature:people_list --> :core:ui
+  :feature:people_list --> :core:di
+  :feature:people_list --> :core:domain
+  :feature:people_list --> :core:coroutines
+  :feature:people_list --> :core:util
+  :feature:people_list --> :core:analytics
   :app --> :core:navigation
+  :feature:people --> :feature:people_list
+  :feature:people --> :feature:people_profile
+  :feature:people --> :core:ui
+  :feature:people --> :core:di
+  :feature:people --> :core:domain
+  :feature:people --> :core:coroutines
+  :feature:people --> :core:util
+  :feature:people --> :core:analytics
+  :feature:people_profile --> :core:ui
+  :feature:people_profile --> :core:di
+  :feature:people_profile --> :core:domain
+  :feature:people_profile --> :core:coroutines
+  :feature:people_profile --> :core:util
+  :feature:people_profile --> :core:analytics
 
 classDef focus fill:#FA8140,stroke:#fff,stroke-width:2px,color:#fff;
 class :core:navigation focus
+class :feature:people focus
+class :feature:people_list focus
+class :feature:people_profile focus
 ```
 ##
 ## Author:
