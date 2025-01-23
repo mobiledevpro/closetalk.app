@@ -79,7 +79,8 @@ subprojects {
 ```mermaid
 %%{
   init: {
-    'theme': 'neutral'
+    'theme': 'base',
+    'themeVariables': {"primaryTextColor":"#fff","primaryColor":"#5a4f7c","primaryBorderColor":"#5a4f7c","lineColor":"#f5a623","tertiaryColor":"#40375c","fontSize":"12px"}
   }
 }%%
 
@@ -181,6 +182,28 @@ graph LR
   :feature:main --> :core:coroutines
   :feature:main --> :core:util
   :feature:main --> :core:analytics
+
+classDef android-library fill:#3BD482,stroke:#fff,stroke-width:2px,color:#fff;
+classDef android-application fill:#2C4162,stroke:#fff,stroke-width:2px,color:#fff;
+class :core:navigation android-library
+class :core:ui android-library
+class :core:di android-library
+class :core:domain android-library
+class :feature:home android-library
+class :feature:onboarding android-library
+class :feature:subscription android-library
+class :feature:chat_list android-library
+class :feature:people android-library
+class :feature:user_profile android-library
+class :feature:people_list android-library
+class :core:coroutines android-library
+class :core:util android-library
+class :core:analytics android-library
+class :feature:settings_core android-library
+class :app android-application
+class :feature:main android-library
+class :feature:people_profile android-library
+
 ```
 ##
 ## Author:

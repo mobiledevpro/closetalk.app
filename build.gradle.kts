@@ -1,3 +1,6 @@
+import dev.iurysouza.modulegraph.Orientation
+import dev.iurysouza.modulegraph.Theme
+
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.android.application) apply false
@@ -34,6 +37,22 @@ subprojects {
 }
 
 moduleGraphConfig {
-    readmePath.set("./README.md")
+    readmePath.set("${rootDir}/README.md")
     heading = "## Module Graph"
+    orientation.set(Orientation.LEFT_TO_RIGHT) //optional
+    setStyleByModuleType.set(true)
+
+    theme.set(
+        Theme.BASE(
+            mapOf(
+                "primaryTextColor" to "#fff",
+                "primaryColor" to "#5a4f7c",
+                "primaryBorderColor" to "#5a4f7c",
+                "lineColor" to "#f5a623",
+                "tertiaryColor" to "#40375c",
+                "fontSize" to "12px",
+            ),
+            focusColor = "#FA8140"
+        ),
+    )
 }
