@@ -40,7 +40,9 @@ moduleGraphConfig {
     readmePath.set("${rootDir}/README.md")
     heading = "## Module Graph"
     orientation.set(Orientation.LEFT_TO_RIGHT) //optional
-    setStyleByModuleType.set(true)
+    setStyleByModuleType.set(false)
+
+    focusedModulesRegex.set(".*(navigation).*")
 
     theme.set(
         Theme.BASE(
