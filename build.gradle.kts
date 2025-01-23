@@ -42,7 +42,7 @@ moduleGraphConfig {
     orientation.set(Orientation.LEFT_TO_RIGHT) //optional
     setStyleByModuleType.set(false)
 
-    focusedModulesRegex.set(".*(navigation|chat_list).*")
+    focusedModulesRegex.set(".*(navigation|home).*")
 
     theme.set(
         Theme.BASE(

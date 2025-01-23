@@ -107,17 +107,17 @@ graph LR
   :core:navigation --> :feature:chat_list
   :core:navigation --> :feature:people
   :core:navigation --> :feature:user_profile
-  :feature:chat_list --> :core:ui
-  :feature:chat_list --> :core:di
-  :feature:chat_list --> :core:domain
-  :feature:chat_list --> :core:coroutines
-  :feature:chat_list --> :core:util
-  :feature:chat_list --> :core:analytics
   :app --> :core:navigation
+  :feature:home --> :core:ui
+  :feature:home --> :core:di
+  :feature:home --> :core:domain
+  :feature:home --> :core:coroutines
+  :feature:home --> :core:util
+  :feature:home --> :core:analytics
 
 classDef focus fill:#FA8140,stroke:#fff,stroke-width:2px,color:#fff;
 class :core:navigation focus
-class :feature:chat_list focus
+class :feature:home focus
 ```
 ### How to create the module graph
 
