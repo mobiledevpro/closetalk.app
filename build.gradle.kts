@@ -48,10 +48,10 @@ moduleGraphConfig {
         Theme.BASE(
             mapOf(
                 "primaryTextColor" to "#fff",
-                "primaryColor" to "#8FCDFF",
+                "primaryColor" to "#5a4f7c",
                 "primaryBorderColor" to "#5a4f7c",
                 "lineColor" to "#f5a623",
-                "tertiaryColor" to "#40375c",
+                "tertiaryColor" to "#8FCDFF",
                 "fontSize" to "12px",
             ),
             focusColor = "#FA8140"
