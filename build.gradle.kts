@@ -51,7 +51,7 @@ moduleGraphConfig {
                 "primaryColor" to "#5a4f7c",
                 "primaryBorderColor" to "#5a4f7c",
                 "lineColor" to "#f5a623",
-                "tertiaryColor" to "#8FCDFF",
+                "tertiaryColor" to "#40375c",
                 "fontSize" to "12px",
             ),
             focusColor = "#FA8140"
