@@ -15,6 +15,7 @@ google-services = "4.4.2"
 plugin-crashlytics = "3.0.2"
 plugin-performance = "1.4.2"
 plugin-protobuf = "0.9.4"
+module-graph = "0.10.1"
 
 
 # Libs
@@ -66,6 +67,7 @@ crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "plugin-cr
 performance-monitor = { id = "com.google.firebase.firebase-perf", version.ref = "plugin-performance" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" } # Compose Compiler plugin was added in Kotlin 2.0
 google-protobuf = { id = "com.google.protobuf", version.ref = "plugin-protobuf" }
+module-graph = { id = "dev.iurysouza.modulegraph", version.ref = "module-graph" }
 
 [libraries]
 

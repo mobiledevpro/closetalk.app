@@ -74,6 +74,114 @@ subprojects {
 
 ![modularization](doc/modularization.png)
 
+## Module Graph
+
+```mermaid
+%%{
+  init: {
+    'theme': 'neutral'
+  }
+}%%
+
+graph LR
+  subgraph :core
+    :core:navigation["navigation"]
+    :core:ui["ui"]
+    :core:di["di"]
+    :core:domain["domain"]
+    :core:coroutines["coroutines"]
+    :core:util["util"]
+    :core:analytics["analytics"]
+  end
+  subgraph :feature
+    :feature:home["home"]
+    :feature:onboarding["onboarding"]
+    :feature:subscription["subscription"]
+    :feature:chat_list["chat_list"]
+    :feature:people["people"]
+    :feature:user_profile["user_profile"]
+    :feature:people_list["people_list"]
+    :feature:settings_core["settings_core"]
+    :feature:main["main"]
+    :feature:people_profile["people_profile"]
+  end
+  :core:navigation --> :core:ui
+  :core:navigation --> :core:di
+  :core:navigation --> :core:domain
+  :core:navigation --> :feature:home
+  :core:navigation --> :feature:onboarding
+  :core:navigation --> :feature:subscription
+  :core:navigation --> :feature:chat_list
+  :core:navigation --> :feature:people
+  :core:navigation --> :feature:user_profile
+  :feature:people_list --> :core:ui
+  :feature:people_list --> :core:di
+  :feature:people_list --> :core:domain
+  :feature:people_list --> :core:coroutines
+  :feature:people_list --> :core:util
+  :feature:people_list --> :core:analytics
+  :feature:chat_list --> :core:ui
+  :feature:chat_list --> :core:di
+  :feature:chat_list --> :core:domain
+  :feature:chat_list --> :core:coroutines
+  :feature:chat_list --> :core:util
+  :feature:chat_list --> :core:analytics
+  :feature:settings_core --> :core:ui
+  :feature:settings_core --> :core:di
+  :feature:settings_core --> :core:domain
+  :feature:settings_core --> :core:coroutines
+  :feature:settings_core --> :core:util
+  :feature:settings_core --> :core:analytics
+  :feature:subscription --> :core:ui
+  :feature:subscription --> :core:di
+  :feature:subscription --> :core:domain
+  :feature:subscription --> :core:coroutines
+  :feature:subscription --> :core:util
+  :feature:subscription --> :core:analytics
+  :app --> :core:navigation
+  :app --> :core:analytics
+  :app --> :feature:main
+  :feature:onboarding --> :core:ui
+  :feature:onboarding --> :core:di
+  :feature:onboarding --> :core:domain
+  :feature:onboarding --> :core:coroutines
+  :feature:onboarding --> :core:util
+  :feature:onboarding --> :core:analytics
+  :feature:people --> :feature:people_list
+  :feature:people --> :feature:people_profile
+  :feature:people --> :core:ui
+  :feature:people --> :core:di
+  :feature:people --> :core:domain
+  :feature:people --> :core:coroutines
+  :feature:people --> :core:util
+  :feature:people --> :core:analytics
+  :feature:home --> :core:ui
+  :feature:home --> :core:di
+  :feature:home --> :core:domain
+  :feature:home --> :core:coroutines
+  :feature:home --> :core:util
+  :feature:home --> :core:analytics
+  :feature:people_profile --> :core:ui
+  :feature:people_profile --> :core:di
+  :feature:people_profile --> :core:domain
+  :feature:people_profile --> :core:coroutines
+  :feature:people_profile --> :core:util
+  :feature:people_profile --> :core:analytics
+  :feature:user_profile --> :core:ui
+  :feature:user_profile --> :core:di
+  :feature:user_profile --> :core:domain
+  :feature:user_profile --> :core:coroutines
+  :feature:user_profile --> :core:util
+  :feature:user_profile --> :core:analytics
+  :feature:user_profile --> :feature:settings_core
+  :feature:main --> :feature:settings_core
+  :feature:main --> :core:ui
+  :feature:main --> :core:di
+  :feature:main --> :core:domain
+  :feature:main --> :core:coroutines
+  :feature:main --> :core:util
+  :feature:main --> :core:analytics
+```
 ##
 ## Author:
 

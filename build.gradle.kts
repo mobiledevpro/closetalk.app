@@ -5,6 +5,9 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.kapt) apply false
     alias(libs.plugins.compose.compiler) apply false
+
+    // To generate a module graph
+    alias(libs.plugins.module.graph)
 }
 
 tasks.register("clean", Delete::class){
@@ -28,4 +31,9 @@ subprojects {
                     project.buildDir.absolutePath + "/compose_metrics"
         )
     }
+}
+
+moduleGraphConfig {
+    readmePath.set("./README.md")
+    heading = "## Module Graph"
 }
