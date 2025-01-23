@@ -48,7 +48,7 @@ moduleGraphConfig {
         Theme.BASE(
             mapOf(
                 "primaryTextColor" to "#fff",
-                "primaryColor" to "#5a4f7c",
+                "primaryColor" to "#8FCDFF",
                 "primaryBorderColor" to "#5a4f7c",
                 "lineColor" to "#f5a623",
                 "tertiaryColor" to "#40375c",
