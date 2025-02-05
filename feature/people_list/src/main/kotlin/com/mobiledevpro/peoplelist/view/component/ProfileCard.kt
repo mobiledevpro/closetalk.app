@@ -44,10 +44,11 @@ import com.mobiledevpro.ui.theme.AppTheme
  */
 @Composable
 internal fun ProfileCard(modifier: Modifier = Modifier, item: PeopleProfile, onClick: () -> Unit) {
-    CardItem(modifier = modifier.clickable { onClick.invoke() }) {
+    CardItem(modifier = modifier) {
         Row(
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .clickable { onClick.invoke() },
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Start
         ) {
