@@ -59,10 +59,13 @@ internal fun ChatCard(
 
     CardItem(
         modifier = modifier
-            .clickable { onClick.invoke() }
     ) {
 
-        Box {
+        Box(
+            modifier = Modifier
+            .fillMaxSize()
+            .clickable { onClick.invoke() }
+        ) {
             Row(
                 modifier = Modifier
                     .padding(horizontal = 16.dp, vertical = 24.dp)
