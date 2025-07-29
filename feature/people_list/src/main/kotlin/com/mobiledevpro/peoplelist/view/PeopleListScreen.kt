@@ -147,7 +147,7 @@ private fun SharedTransitionScope.PeopleList(
                             Modifier
                     )
                     .sharedElement(
-                        state = rememberSharedContentState(
+                        sharedContentState = rememberSharedContentState(
                             key = "image-${profile.photo}"
                         ),
                         animatedVisibilityScope = animatedVisibilityScope,

@@ -150,7 +150,7 @@ fun SharedTransitionScope.PeopleProfileScreen(
                                 rect.topCenter.y.toInt() + (rect.bottomCenter.y - rect.topCenter.y).toInt() / 2
                         }
                         .sharedElement(
-                            state = rememberSharedContentState(key = "image-${profile.photo}"),
+                            sharedContentState = rememberSharedContentState(key = "image-${profile.photo}"),
                             animatedVisibilityScope = animatedVisibilityScope,
                         )
                 )

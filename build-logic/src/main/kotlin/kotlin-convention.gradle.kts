@@ -7,11 +7,10 @@ tasks.withType<KotlinCompile> {
         jvmTarget.set(JvmTarget.JVM_17)
         freeCompilerArgs.set(
             listOf(
-                "-Xallow-result-return-type",
                 "-Xcontext-receivers",
             ),
         )
-        languageVersion.set(KotlinVersion.KOTLIN_1_9)
-        apiVersion.set(KotlinVersion.KOTLIN_1_9)
+        languageVersion.set(KotlinVersion.KOTLIN_2_2)
+        apiVersion.set(KotlinVersion.KOTLIN_2_2)
     }
 }
