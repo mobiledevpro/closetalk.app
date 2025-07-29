@@ -5,7 +5,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mobiledevpro_Jetpack-Compose-ChatApp-Template&metric=alert_status)](https://sonarcloud.io/dashboard?id=mobiledevpro_Jetpack-Compose-ChatApp-Template)
 
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-2.2.0-blue.svg?style=flat-square)](http://kotlinlang.org/)
-[![Compose Bom](https://img.shields.io/badge/Compose%20Bom-2025.03.00-blue.svg?style=flat-square)]([http://kotlinlang.org/](https://developer.android.com/jetpack/compose/bom/bom-mapping))
+[![Compose Bom](https://img.shields.io/badge/Compose%20Bom-2025.07.00-blue.svg?style=flat-square)]([http://kotlinlang.org/](https://developer.android.com/jetpack/compose/bom/bom-mapping))
 [![Gradle Plugin](https://img.shields.io/badge/Gradle-8.11.1-blue.svg?style=flat-square)](https://developer.android.com/build/releases/gradle-plugin)
 [![API](https://img.shields.io/badge/Min%20SDK-29%20[Android%2010]-blue.svg?style=flat-square)](https://github.com/AndroidSDKSources/android-sdk-sources-list)
 [![Target SDK](https://img.shields.io/badge/Target%20SDK-36%20[Android%2016]-blue.svg?style=flat-square)](https://developer.android.com/about/versions/13)
