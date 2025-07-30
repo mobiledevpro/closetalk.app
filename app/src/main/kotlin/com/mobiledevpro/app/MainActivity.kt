@@ -1,5 +1,6 @@
 package com.mobiledevpro.app
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,6 +19,7 @@ import com.mobiledevpro.app.ui.MainApp
 import com.mobiledevpro.di.koinScope
 import com.mobiledevpro.main.view.state.MainUIState
 import com.mobiledevpro.main.view.vm.MainViewModel
+import com.mobiledevpro.sync.service.SyncDataService
 import com.mobiledevpro.ui.compositionlocal.LocalAnalytics
 import com.mobiledevpro.ui.theme.AppTheme
 import org.koin.compose.KoinContext
@@ -59,5 +61,17 @@ class MainActivity : ComponentActivity(), KoinComponent {
                 }
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Intent(this, SyncDataService::class.java)
+            .also(this::startForegroundService)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Intent(this, SyncDataService::class.java)
+            .also(this::stopService)
     }
 }
