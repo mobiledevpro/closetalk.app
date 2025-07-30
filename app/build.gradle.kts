@@ -114,13 +114,6 @@ android {
     packaging {
         resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
     }
-
-    // There are duplicated classes in firebase lib and in com.google.protobuf
-    configurations {
-        implementation {
-            exclude(group = "com.google.firebase", module = "protolite-well-known-types")
-        }
-    }
 }
 
 dependencies {

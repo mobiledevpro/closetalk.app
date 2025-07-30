@@ -20,17 +20,18 @@ package com.mobiledevpro.sync.service
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Service
-import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import android.os.PowerManager
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.mobiledevpro.sync.di.featureSyncData
+import com.mobiledevpro.sync.domain.usecase.SyncPeopleUseCase
 import com.mobiledevpro.util.Constant
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import org.koin.core.component.KoinScopeComponent
 import org.koin.core.component.getOrCreateScope
 import org.koin.core.context.loadKoinModules
@@ -48,6 +49,7 @@ private const val NOTIFICATION_CHANNEL_NAME = "Sync Data Channel"
 class SyncDataService() : Service(), KoinScopeComponent {
 
     override val scope: Scope by getOrCreateScope()
+    private val syncPeopleUseCase by scope.inject<SyncPeopleUseCase>()
 
     private val serviceJob = Job()
     private val serviceScope = CoroutineScope(Dispatchers.IO + serviceJob)
@@ -69,6 +71,11 @@ class SyncDataService() : Service(), KoinScopeComponent {
         super.onCreate()
         wakeLock.acquire(10 * 60 * 1000L /*10 minutes*/)
         createNotificationChannel()
+
+        // Sync People list
+        serviceScope.launch {
+            syncPeopleUseCase.execute()
+        }
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
