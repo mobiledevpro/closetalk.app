@@ -17,6 +17,8 @@
  */
 package com.mobiledevpro.sync.di
 
+import com.google.firebase.firestore.FirebaseFirestore
+import com.mobiledevpro.firestore.FirestoreHelper
 import com.mobiledevpro.sync.domain.usecase.SyncPeopleUseCase
 import com.mobiledevpro.sync.service.SyncDataService
 import org.koin.core.module.dsl.scopedOf
@@ -31,5 +33,8 @@ import org.koin.dsl.module
 val featureSyncData = module {
     scope<SyncDataService> {
         scopedOf(::SyncPeopleUseCase)
+        scoped<FirebaseFirestore> {
+            FirestoreHelper.getInstance()
+        }
     }
 }

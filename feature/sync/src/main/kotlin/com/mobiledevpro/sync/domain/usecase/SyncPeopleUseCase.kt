@@ -18,13 +18,14 @@
 package com.mobiledevpro.sync.domain.usecase
 
 import android.util.Log
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
 import com.mobiledevpro.coroutines.BaseCoroutinesUseCase
 import com.mobiledevpro.coroutines.None
-import com.mobiledevpro.firestore.FirestoreHelper
 import com.mobiledevpro.util.Constant
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.asExecutor
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.collect
@@ -37,10 +38,9 @@ import kotlinx.coroutines.flow.onEach
  * Created on Jul 30, 2025.
  *
  */
-class SyncPeopleUseCase : BaseCoroutinesUseCase<None, None>(Dispatchers.IO) {
-
-    val firestoreDb = FirestoreHelper.getInstance()
-
+class SyncPeopleUseCase(
+    val firestore: FirebaseFirestore
+) : BaseCoroutinesUseCase<None, None>(Dispatchers.IO) {
 
     override suspend fun buildUseCase(params: None?): None {
         getPeopleFromFirestore()
@@ -49,7 +49,7 @@ class SyncPeopleUseCase : BaseCoroutinesUseCase<None, None>(Dispatchers.IO) {
 
                 Log.d(
                     Constant.LOG_TAG_DEBUG,
-                    "SyncPeopleUseCase.buildUseCase: documents = ${snapshot.documents.size}"
+                    "SyncPeopleUseCase.buildUseCase: documents = ${snapshot.documents.size} | Thread = ${Thread.currentThread().name}"
                 )
 
                 for (document in snapshot.documents) {
@@ -69,21 +69,20 @@ class SyncPeopleUseCase : BaseCoroutinesUseCase<None, None>(Dispatchers.IO) {
 
     private fun getPeopleFromFirestore() = callbackFlow<QuerySnapshot> {
         // Implementation to fetch People data from Firestore
-        val listenerRegistration = firestoreDb.collection("people")
-            .addSnapshotListener { snapshot: QuerySnapshot?, error: FirebaseFirestoreException? ->
-                if (error != null) {
-                    close(error)
-                    return@addSnapshotListener
+        val listenerRegistration =
+            firestore.collection("people")
+                .addSnapshotListener(Dispatchers.IO.asExecutor()) { snapshot: QuerySnapshot?, error: FirebaseFirestoreException? ->
+                    if (error != null) {
+                        close(error)
+                        return@addSnapshotListener
+                    }
+
+                    snapshot?.also(::trySend)
                 }
 
-                snapshot?.also(::trySend)
-            }
 
         awaitClose {
-            Log.d(Constant.LOG_TAG_DEBUG, "SyncPeopleUseCase.getPeopleFromFirestore(): awaitClose")
             listenerRegistration.remove()
         }
     }
-
-
 }
