@@ -6,9 +6,13 @@ sdk-min = "29"
 sdk-target = "36"
 sdk-compile = "36"
 
+app-database-version = "1"
+app-database-name = "closetalk.db"
+
 # Plugins
 android-gradle = "8.11.1"
 kotlin = "2.2.0"
+ksp = "2.2.0-2.0.2"
 kotlin-coroutines = "1.10.2"
 kotlin-serialization = "1.4.1"
 google-services = "4.4.3"
@@ -23,7 +27,7 @@ android-core-ktx = "1.16.0"
 activity = "1.10.1"
 navigation = "2.9.2"
 retrofit = "2.9.0"
-room = "2.4.3"
+room = "2.7.2"
 lifecycle = "2.9.2"
 compose-bom = "2025.07.00"
 
@@ -62,6 +66,7 @@ android-library = { id = "com.android.library", version.ref = "android-gradle" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
 crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "plugin-crashlytics" }
 performance-monitor = { id = "com.google.firebase.firebase-perf", version.ref = "plugin-performance" }
@@ -126,6 +131,10 @@ koin-compose-navigation = { module = "io.insert-koin:koin-androidx-compose-navig
 koin-workmanager = { module = "io.insert-koin:koin-androidx-workmanager", version.ref = "koin" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 koin-test-junit = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin" }
+
+room = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+room-ktx = { module = "androidx.room:room-ktx", version = "room" }
 
 # Firebase
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
