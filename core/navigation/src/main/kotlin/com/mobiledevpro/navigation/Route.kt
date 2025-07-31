@@ -36,7 +36,7 @@ const val navigationRouteProfile = "profile"
 const val navigationRoutePeople = "people"
 const val navigationRoutePeopleList = "people_list"
 const val navigationRoutePeopleProfile =
-    "people_profile/{${PeopleProfileArgs.PEOPLE_PROFILE_ID_ARG}}"
+    "people_profile/{${PeopleProfileArgs.PEOPLE_PROFILE_UUID_ARG}}"
 
 const val navigationRouteSubscription = "subscription"
 

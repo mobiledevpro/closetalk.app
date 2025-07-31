@@ -54,14 +54,14 @@ internal fun ProfileCard(modifier: Modifier = Modifier, item: PeopleProfile, onC
         ) {
             ProfilePicture(
                 item.photo ?: Uri.EMPTY,
-                item.status,
+                item.online,
                 size = ProfilePictureSize.MEDIUM,
                 modifier = Modifier.padding(16.dp)
             )
             ProfileContent(
                 userName = item.name,
                 subName = null,
-                isOnline = item.status,
+                isOnline = item.online,
                 alignment = Alignment.Start,
                 modifier = Modifier.padding(8.dp)
             )

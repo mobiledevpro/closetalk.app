@@ -44,8 +44,8 @@ fun NavGraphBuilder.peopleListScreen(
         transitionScope.PeopleListScreen(
             viewModel.uiState,
             animatedVisibilityScope = this,
-            onNavigateToProfile = { profileId: Int ->
-                Screen.PeopleProfile.routeWith(profileId.toString())
+            onNavigateToProfile = { profileUuid: String ->
+                Screen.PeopleProfile.routeWith(profileUuid)
                     .also(onNavigateTo)
             }
         )

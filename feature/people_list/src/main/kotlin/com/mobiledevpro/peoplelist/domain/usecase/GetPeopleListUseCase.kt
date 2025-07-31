@@ -17,20 +17,30 @@
  */
 package com.mobiledevpro.peoplelist.domain.usecase
 
+import com.mobiledevpro.analytics.Crashlytics
 import com.mobiledevpro.coroutines.BaseCoroutinesFLowUseCase
 import com.mobiledevpro.coroutines.None
+import com.mobiledevpro.database.AppDatabase
+import com.mobiledevpro.database.entity.PeopleEntity
 import com.mobiledevpro.domain.model.PeopleProfile
-import com.mobiledevpro.domain.model.fakePeopleProfileList
+import com.mobiledevpro.peoplelist.mapper.toDomain
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 
 
-class GetPeopleListUseCase : BaseCoroutinesFLowUseCase<None, List<PeopleProfile>>(Dispatchers.IO) {
+class GetPeopleListUseCase(
+    private val database: AppDatabase
+) : BaseCoroutinesFLowUseCase<None, List<PeopleProfile>>(Dispatchers.IO) {
 
     @OptIn(FlowPreview::class)
-    override fun buildUseCaseFlow(params: None?): Flow<List<PeopleProfile>> {
-        return flowOf(fakePeopleProfileList)
+    override fun buildUseCaseFlow(params: None?): Flow<List<PeopleProfile>> =
+        database.peopleDao().selectAll()
+            .map(List<PeopleEntity>::toDomain)
+
+
+    override fun logException(errMessage: String) {
+        Crashlytics.logException(Throwable("[GetPeopleListUseCase] $errMessage"))
     }
 }

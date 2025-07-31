@@ -115,7 +115,7 @@ fun ChatPicture(profileList: List<PeopleProfile>, modifier: Modifier = Modifier)
 
                 ProfilePicture(
                     profile.photo ?: Uri.EMPTY,
-                    profile.status,
+                    profile.online,
                     size = ProfilePictureSize.SMALL,
                     modifier = Modifier.padding(start = 16.dp * index)
                 )
@@ -134,7 +134,7 @@ fun ChatPicture(profileList: List<PeopleProfile>, modifier: Modifier = Modifier)
 @Composable
 @Preview
 fun ChatCardPreview() {
-    val peopleList = fakePeopleProfileList.take(2).sortedByDescending { !it.status }
+    val peopleList = fakePeopleProfileList.take(2).sortedByDescending { !it.online }
     val chat = Chat(fakeUser, peopleList)
     AppTheme {
         ChatCard(

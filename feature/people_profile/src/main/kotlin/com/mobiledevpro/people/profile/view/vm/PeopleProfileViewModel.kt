@@ -44,10 +44,10 @@ class PeopleProfileViewModel(
     override val scope: CoroutineScope
         get() = viewModelScope
 
-    private val profileId : Int =  PeopleProfileArgs(savedStateHandle).peopleProfileId
+    private val profileUuid: String = PeopleProfileArgs(savedStateHandle).peopleProfileUuid
 
     override fun observeState(): Flow<PeopleProfileUIState> =
-        getPeopleProfileUseCase.execute(profileId)
+        getPeopleProfileUseCase.execute(profileUuid)
             .map { result ->
 
                 try {

@@ -24,11 +24,11 @@ import androidx.lifecycle.SavedStateHandle
  * Created on Feb 04, 2023.
  *
  */
-class PeopleProfileArgs(val peopleProfileId: Int) {
+class PeopleProfileArgs(val peopleProfileUuid: String) {
     constructor(savedStateHandle: SavedStateHandle) :
-            this(checkNotNull(savedStateHandle[PEOPLE_PROFILE_ID_ARG]) as Int)
+            this(checkNotNull(savedStateHandle[PEOPLE_PROFILE_UUID_ARG]) as String)
 
     companion object {
-        const val PEOPLE_PROFILE_ID_ARG = "peopleProfileId"
+        const val PEOPLE_PROFILE_UUID_ARG = "peopleProfileUuid"
     }
 }

@@ -17,11 +17,9 @@
  */
 package com.mobiledevpro.peoplelist.view.vm
 
-import androidx.lifecycle.viewModelScope
 import com.mobiledevpro.peoplelist.domain.usecase.GetPeopleListUseCase
 import com.mobiledevpro.peoplelist.view.state.PeopleProfileUIState
 import com.mobiledevpro.ui.vm.BaseViewModel
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -32,9 +30,6 @@ class PeopleListViewModel(
 
     override val initialState: PeopleProfileUIState
         get() = PeopleProfileUIState.Loading
-
-    override val scope: CoroutineScope
-        get() = viewModelScope
 
     override fun observeState(): Flow<PeopleProfileUIState> =
         getPeopleListUseCase.execute()

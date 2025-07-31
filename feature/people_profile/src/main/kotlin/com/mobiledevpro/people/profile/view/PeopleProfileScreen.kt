@@ -139,7 +139,7 @@ fun SharedTransitionScope.PeopleProfileScreen(
             peopleProfile?.let { profile ->
                 ProfilePicture(
                     photoUri = profile.photo ?: Uri.EMPTY,
-                    onlineStatus = profile.status,
+                    onlineStatus = profile.online,
                     size = ProfilePictureSize.LARGE,
                     modifier = Modifier
                         .padding(paddingValues = PaddingValues(16.dp, 16.dp, 16.dp, 16.dp))
@@ -157,7 +157,7 @@ fun SharedTransitionScope.PeopleProfileScreen(
 
                 ProfileContent(
                     userName = profile.name,
-                    isOnline = profile.status,
+                    isOnline = profile.online,
                     alignment = Alignment.CenterHorizontally,
                     modifier = Modifier
                         .padding(8.dp)

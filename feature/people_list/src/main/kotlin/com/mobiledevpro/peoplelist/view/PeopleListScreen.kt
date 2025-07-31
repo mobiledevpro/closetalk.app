@@ -52,7 +52,7 @@ import kotlinx.coroutines.flow.StateFlow
 fun SharedTransitionScope.PeopleListScreen(
     stateFlow: StateFlow<PeopleProfileUIState>,
     animatedVisibilityScope: AnimatedVisibilityScope,
-    onNavigateToProfile: (profileId: Int) -> Unit
+    onNavigateToProfile: (profileUuid: String) -> Unit
 ) {
 
     val uiState by stateFlow.collectAsStateWithLifecycle()
@@ -127,7 +127,7 @@ private fun Loading() {
 private fun SharedTransitionScope.PeopleList(
     list: List<PeopleProfile>,
     animatedVisibilityScope: AnimatedVisibilityScope,
-    onProfileClick: (profileId: Int) -> Unit
+    onProfileClick: (profileUuid: String) -> Unit
 ) {
 
     //Cause content is drawn edge-to-edge, let's set the top-padding for the first element in the list
@@ -153,7 +153,7 @@ private fun SharedTransitionScope.PeopleList(
                         animatedVisibilityScope = animatedVisibilityScope,
                     ),
                 item = profile,
-                onClick = { onProfileClick(profile.id) })
+                onClick = { onProfileClick(profile.uuid) })
         }
     }
 }

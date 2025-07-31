@@ -24,12 +24,12 @@ val fakeUser = UserProfile(
 val fakeChatList = arrayListOf(
     Chat(
         user = fakeUser,
-        peopleList = fakePeopleProfileList.take(5).sortedByDescending { !it.status },
+        peopleList = fakePeopleProfileList.take(5).sortedByDescending { !it.online },
         unreadMsgCount = 100
     ),
     Chat(
         user = fakeUser,
-        peopleList = fakePeopleProfileList.takeLast(3).sortedByDescending { !it.status },
+        peopleList = fakePeopleProfileList.takeLast(3).sortedByDescending { !it.online },
         unreadMsgCount = 0
     ),
 

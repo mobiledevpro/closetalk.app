@@ -42,7 +42,7 @@ fun NavGraphBuilder.peopleProfileScreen(
     composable(
         route = Screen.PeopleProfile.route,
         arguments = listOf(
-            navArgument(PeopleProfileArgs.PEOPLE_PROFILE_ID_ARG) { type = NavType.IntType }
+            navArgument(PeopleProfileArgs.PEOPLE_PROFILE_UUID_ARG) { type = NavType.StringType }
         )
     ) {
 
