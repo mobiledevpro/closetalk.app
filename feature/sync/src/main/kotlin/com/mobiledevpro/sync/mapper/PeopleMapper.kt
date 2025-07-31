@@ -15,32 +15,24 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.database.dao
+package com.mobiledevpro.sync.mapper
 
-import androidx.room.Dao
-import androidx.room.Query
-import androidx.room.Transaction
+import com.google.firebase.firestore.DocumentSnapshot
 import com.mobiledevpro.database.entity.PeopleEntity
-import kotlinx.coroutines.flow.Flow
 
-/**
- *
- * Created on Jul 31, 2025.
- *
- */
 
-@Dao
-interface PeopleDao : BaseDao<PeopleEntity> {
+fun DocumentSnapshot.toDatabase(): PeopleEntity =
+    PeopleEntity(
+        uuid = this.id,
+        name = getString("name") ?: "",
+        surname = getString("surname") ?: "",
+        online = getBoolean("online") ?: false,
+        photoUrl = getString("photo_url")
+    )
 
-    @Query("SELECT * FROM people")
-    fun selectAll(): Flow<List<PeopleEntity>>
 
-    @Query("DELETE FROM people")
-    suspend fun deleteAll()
+fun List<DocumentSnapshot>.toDatabase(): List<PeopleEntity> =
+    mapTo(ArrayList<PeopleEntity>(), DocumentSnapshot::toDatabase)
 
-    @Transaction
-    suspend fun updateAll(list: List<PeopleEntity>) {
-        deleteAll()
-        insert(list)
-    }
-}
+
+

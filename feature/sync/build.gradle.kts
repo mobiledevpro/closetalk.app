@@ -4,4 +4,5 @@ plugins {
 
 dependencies {
     implementation(projects.core.firestore)
+    implementation(projects.core.database)
 }

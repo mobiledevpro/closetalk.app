@@ -23,14 +23,15 @@ import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
 import com.mobiledevpro.coroutines.BaseCoroutinesUseCase
 import com.mobiledevpro.coroutines.None
+import com.mobiledevpro.database.AppDatabase
+import com.mobiledevpro.database.entity.PeopleEntity
+import com.mobiledevpro.sync.mapper.toDatabase
 import com.mobiledevpro.util.Constant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.collectLatest
 
 /**
  * Use case to sync People list from Firestore to local database.
@@ -39,30 +40,24 @@ import kotlinx.coroutines.flow.onEach
  *
  */
 class SyncPeopleUseCase(
-    val firestore: FirebaseFirestore
+    val firestore: FirebaseFirestore,
+    val database: AppDatabase
 ) : BaseCoroutinesUseCase<None, None>(Dispatchers.IO) {
 
     override suspend fun buildUseCase(params: None?): None {
         getPeopleFromFirestore()
-            .onEach { snapshot: QuerySnapshot ->
-                // TODO: Save documents to local database
-
-                Log.d(
-                    Constant.LOG_TAG_DEBUG,
-                    "SyncPeopleUseCase.buildUseCase: documents = ${snapshot.documents.size} | Thread = ${Thread.currentThread().name}"
-                )
-
+            .collectLatest { snapshot: QuerySnapshot ->
                 for (document in snapshot.documents) {
                     Log.d(
                         Constant.LOG_TAG_DEBUG,
                         "SyncPeopleUseCase.buildUseCase:${document.id} => ${document.data}"
                     )
                 }
+
+                snapshot.documents
+                    .toDatabase()
+                    .updatePeopleLocal()
             }
-            .onCompletion {
-                Log.d(Constant.LOG_TAG_DEBUG, "SyncPeopleUseCase.buildUseCase: Completed")
-            }
-            .collect()
 
         return None()
     }
@@ -84,5 +79,10 @@ class SyncPeopleUseCase(
         awaitClose {
             listenerRegistration.remove()
         }
+    }
+
+    private suspend fun List<PeopleEntity>.updatePeopleLocal() {
+        database.peopleDao()
+            .updateAll(this)
     }
 }
