@@ -19,6 +19,7 @@ package com.mobiledevpro.app.di
 
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.mobiledevpro.app.MainActivity
+import com.mobiledevpro.database.AppDatabase
 import com.mobiledevpro.main.view.vm.MainViewModel
 import com.mobiledevpro.settings.core.datastore.AppSettingsManager
 import com.mobiledevpro.settings.core.datastore.ImplAppSettingsManager
@@ -35,6 +36,10 @@ val coreModule = module {
 
     single {
         FirebaseAnalytics.getInstance(androidApplication().applicationContext)
+    }
+
+    single {
+        AppDatabase.buildDatabase(androidApplication().applicationContext)
     }
 }
 
