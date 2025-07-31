@@ -13,7 +13,7 @@
 #
 # !!! Don't push 'release.keystore' file to Git repo.
 
-echo y | android update sdk --filter "build-tools-34.0.0,android-34,extra-android-m2repository" --no-ui -a # Grab the Android Support Repo which isn't included in the container
+echo y | android update sdk --filter "build-tools-36.0.0,android-36,extra-android-m2repository" --no-ui -a # Grab the Android Support Repo which isn't included in the container
 mkdir "${ANDROID_HOME}/licenses" || true
 echo "8933bad161af4178b1185d1a37fbf41ea5269c55" >"${ANDROID_HOME}/licenses/android-sdk-license"
 
@@ -36,6 +36,6 @@ git submodule update
   export KEYSTORE_ALIAS &&
 
   #build AAB bundles
-  ./gradlew clean bundleRelease --stacktrace --no-build-cache
+  ./gradlew clean bundleProductionRelease --stacktrace --no-build-cache
 
 rm app/release.jks

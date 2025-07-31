@@ -1,7 +1,7 @@
 [versions]
 # App
-app-version-code = "9"
-app-version-name = "0.1.0-alpha-9"
+app-version-code = "10"
+app-version-name = "0.1.0-alpha-10"
 sdk-min = "29"
 sdk-target = "36"
 sdk-compile = "36"

@@ -16,17 +16,11 @@ android {
     }
 
     compileOptions {
-        android.compileOptions.isCoreLibraryDesugaringEnabled = true
-
-        targetCompatibility = JavaVersion.VERSION_17
-        sourceCompatibility = JavaVersion.VERSION_17
+        isCoreLibraryDesugaringEnabled = true
     }
 
     kotlin {
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_17
-            targetCompatibility = JavaVersion.VERSION_17
-        }
+        jvmToolchain(17)
     }
 
     flavorDimensions += listOf("default")
