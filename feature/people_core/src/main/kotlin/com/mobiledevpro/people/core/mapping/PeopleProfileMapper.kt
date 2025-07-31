@@ -15,7 +15,7 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.peoplelist.mapper
+package com.mobiledevpro.people.core.mapping
 
 import android.net.Uri
 import androidx.core.net.toUri

@@ -156,7 +156,7 @@ fun SharedTransitionScope.PeopleProfileScreen(
                 )
 
                 ProfileContent(
-                    userName = profile.name,
+                    userName = profile.fullName(),
                     isOnline = profile.online,
                     alignment = Alignment.CenterHorizontally,
                     modifier = Modifier

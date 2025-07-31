@@ -35,6 +35,9 @@ interface PeopleDao : BaseDao<PeopleEntity> {
     @Query("SELECT * FROM people")
     fun selectAll(): Flow<List<PeopleEntity>>
 
+    @Query("SELECT * FROM people WHERE uuid = :uuid")
+    fun selectByUuid(uuid: String): Flow<PeopleEntity>
+
     @Query("DELETE FROM people")
     suspend fun deleteAll()
 

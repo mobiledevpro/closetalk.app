@@ -59,7 +59,7 @@ internal fun ProfileCard(modifier: Modifier = Modifier, item: PeopleProfile, onC
                 modifier = Modifier.padding(16.dp)
             )
             ProfileContent(
-                userName = item.name,
+                userName = item.fullName(),
                 subName = null,
                 isOnline = item.online,
                 alignment = Alignment.Start,

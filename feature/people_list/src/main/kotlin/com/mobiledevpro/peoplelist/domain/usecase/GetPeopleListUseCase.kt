@@ -23,7 +23,7 @@ import com.mobiledevpro.coroutines.None
 import com.mobiledevpro.database.AppDatabase
 import com.mobiledevpro.database.entity.PeopleEntity
 import com.mobiledevpro.domain.model.PeopleProfile
-import com.mobiledevpro.peoplelist.mapper.toDomain
+import com.mobiledevpro.people.core.mapping.toDomain
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow

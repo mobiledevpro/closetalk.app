@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation(projects.feature.peopleCore)
+    api(projects.core.database)
 }
