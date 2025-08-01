@@ -93,7 +93,6 @@ adb logcat -v time -s FA FA-SVC
 * Run the flow: run in terminal ```maestro test -c maestro/people-profile-flow.yaml```
 * [Sample config](maestro/people-profile-flow.yaml)
 
-
 ## Module Graph
 
 ```mermaid
@@ -113,6 +112,7 @@ graph LR
     :core:coroutines["coroutines"]
     :core:util["util"]
     :core:analytics["analytics"]
+      :core:database["database"]
   end
   subgraph :feature
     :feature:home["home"]
@@ -121,6 +121,9 @@ graph LR
     :feature:chat_list["chat_list"]
     :feature:people["people"]
     :feature:user_profile["user_profile"]
+      :feature:people_list["people_list"]
+      :feature:people_core["people_core"]
+      :feature:people_profile["people_profile"]
   end
   :core:navigation --> :core:ui
   :core:navigation --> :core:di
@@ -131,19 +134,84 @@ graph LR
   :core:navigation --> :feature:chat_list
   :core:navigation --> :feature:people
   :core:navigation --> :feature:user_profile
+    :feature:people_list --> :core:ui
+    :feature:people_list --> :core:di
+    :feature:people_list --> :core:domain
+    :feature:people_list --> :core:coroutines
+    :feature:people_list --> :core:util
+    :feature:people_list --> :core:analytics
+    :feature:people_list --> :feature:people_core
+    :feature:people_core --> :core:database
+    :feature:people_core --> :core:ui
+    :feature:people_core --> :core:di
+    :feature:people_core --> :core:domain
+    :feature:people_core --> :core:coroutines
+    :feature:people_core --> :core:util
+    :feature:people_core --> :core:analytics
   :app --> :core:navigation
+    :feature:people --> :feature:people_list
+    :feature:people --> :feature:people_profile
+    :feature:people --> :core:ui
+    :feature:people --> :core:di
+    :feature:people --> :core:domain
+    :feature:people --> :core:coroutines
+    :feature:people --> :core:util
+    :feature:people --> :core:analytics
   :feature:home --> :core:ui
   :feature:home --> :core:di
   :feature:home --> :core:domain
   :feature:home --> :core:coroutines
   :feature:home --> :core:util
   :feature:home --> :core:analytics
+    :feature:people_profile --> :core:ui
+    :feature:people_profile --> :core:di
+    :feature:people_profile --> :core:domain
+    :feature:people_profile --> :core:coroutines
+    :feature:people_profile --> :core:util
+    :feature:people_profile --> :core:analytics
+    :feature:people_profile --> :feature:people_core
 
 classDef focus fill:#FA8140,stroke:#fff,stroke-width:2px,color:#fff;
 class :core:navigation focus
 class :feature:home focus
+    class :feature:people focus
+    class :feature:people_list focus
+    class :feature:people_core focus
+    class :feature:people_profile focus
 ```
 ### How to create the module graph
+
+- Apply plugin https://github.com/iurysza/module-graph
+
+- Configure in the root `build.gradle.kts` file:
+
+```kotlin
+
+moduleGraphConfig {
+    readmePath.set("${rootDir}/README.md")
+    heading = "## Module Graph"
+    orientation.set(Orientation.LEFT_TO_RIGHT) //optional
+    setStyleByModuleType.set(false)
+
+    focusedModulesRegex.set(".*(navigation|home).*")
+
+    theme.set(
+        Theme.BASE(
+            mapOf(
+                "primaryTextColor" to "#fff",
+                "primaryColor" to "#5a4f7c",
+                "primaryBorderColor" to "#5a4f7c",
+                "lineColor" to "#f5a623",
+                "tertiaryColor" to "#40375c",
+                "fontSize" to "12px",
+            ),
+            focusColor = "#FA8140"
+        ),
+    )
+}
+```
+
+- Run the following command to generate the module graph and update the README file:
 
 ```kotlin
  ./gradlew createModuleGraph
