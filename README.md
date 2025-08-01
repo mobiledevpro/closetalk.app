@@ -120,8 +120,8 @@ graph LR
     :feature:chat_list["chat_list"]
     :feature:people["people"]
     :feature:user_profile["user_profile"]
-      :feature:people_list["people_list"]
-      :feature:people_core["people_core"]
+    :feature:people_list["people_list"]
+    :feature:people_core["people_core"]
   end
   :core:navigation --> :core:ui
   :core:navigation --> :core:di
@@ -132,26 +132,19 @@ graph LR
   :core:navigation --> :feature:chat_list
   :core:navigation --> :feature:people
   :core:navigation --> :feature:user_profile
-    :feature:people_list --> :core:ui
-    :feature:people_list --> :core:di
-    :feature:people_list --> :core:domain
-    :feature:people_list --> :core:coroutines
-    :feature:people_list --> :core:util
-    :feature:people_list --> :core:analytics
-    :feature:people_list --> :feature:people_core
+  :feature:people_list --> :core:ui
+  :feature:people_list --> :core:di
+  :feature:people_list --> :core:domain
+  :feature:people_list --> :core:coroutines
+  :feature:people_list --> :core:util
+  :feature:people_list --> :core:analytics
+  :feature:people_list --> :feature:people_core
   :app --> :core:navigation
-    :feature:people --> :feature:people_list
-  :feature:home --> :core:ui
-  :feature:home --> :core:di
-  :feature:home --> :core:domain
-  :feature:home --> :core:coroutines
-  :feature:home --> :core:util
-  :feature:home --> :core:analytics
+  :feature:people --> :feature:people_list
 
 classDef focus fill:#FA8140,stroke:#fff,stroke-width:2px,color:#fff;
 class :core:navigation focus
-class :feature:home focus
-    class :feature:people_list focus
+class :feature:people_list focus
 ```
 ### How to create the module graph
 
