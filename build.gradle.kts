@@ -43,7 +43,7 @@ moduleGraphConfig {
     orientation.set(Orientation.LEFT_TO_RIGHT) //optional
     setStyleByModuleType.set(false)
 
-    focusedModulesRegex.set(".*(navigation|home|people).*")
+    focusedModulesRegex.set(".*(navigation|home|people_list).*")
 
     theme.set(
         Theme.BASE(
