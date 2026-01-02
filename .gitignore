@@ -58,6 +58,9 @@ captures/
 .idea/runConfigurations.xml
 .idea/AndroidProjectSystem.xml
 .idea/deviceManager.xml
+.idea/copilot.*
+.idea/markdown.xml
+.idea/deploymentTargetSelector.xml
 
 
 # Keystore files

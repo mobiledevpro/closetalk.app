@@ -41,7 +41,6 @@ fun OnBoardingThirdScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
             .background(color = Color(0x80FF9999))
     ) {
         Text(

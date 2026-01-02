@@ -7,45 +7,45 @@ sdk-target = "36"
 sdk-compile = "36"
 
 # Plugins
-android-gradle = "8.13.0"
-kotlin = "2.2.20"
+android-gradle = "8.13.2"
+kotlin = "2.3.0"
 ksp = "2.2.20-2.0.3"
 kotlin-coroutines = "1.10.2"
 kotlin-serialization = "1.4.1"
-google-services = "4.4.3"
+google-services = "4.4.4"
 plugin-crashlytics = "3.0.6"
-plugin-performance = "2.0.1"
-plugin-protobuf = "0.9.5"
-module-graph = "0.12.1"
+plugin-performance = "2.0.2"
+plugin-protobuf = "0.9.6"
+module-graph = "0.13.0"
 
 
 # Libs
 android-core-ktx = "1.17.0"
-activity = "1.11.0"
-navigation = "2.9.5"
+activity = "1.12.2"
+navigation = "2.9.6"
 retrofit = "2.9.0"
-room = "2.8.1"
-lifecycle = "2.9.4"
-compose-bom = "2025.09.01"
+room = "2.8.4"
+lifecycle = "2.10.0"
+compose-bom = "2025.12.01"
 
 coil = "2.7.0"
 material3 = "1.4.0"
 material-icons-extended = "1.7.8"
 koin = "4.1.1"
-data-store = "1.1.7"
+data-store = "1.2.0"
 protobuf = "4.26.1" # keep 4.26.1 version , otherwise there is a duplicated classes in Firebase Firestore
 koin-compose = "4.1.1"
 coroutines-android = "1.10.2"
-workmanager = "2.10.5"
+workmanager = "2.11.0"
 inapp-update = "2.1.0"
-splash-screen = "1.1.0-rc01"
+splash-screen = "1.2.0"
 
 # Firebase
-firebase-bom = "34.3.0"
+firebase-bom = "34.7.0"
 
 # test libraries
 test-junit = "4.13.2"
-test-mockk = "1.14.5"
+test-mockk = "1.14.7"
 test-coroutines-flow = "1.2.1"
 
 # android test libraries
@@ -55,7 +55,7 @@ espresso-core = "3.7.0"
 robolectric = "4.16"
 
 # 3rd party libs
-lottie = "6.6.9"
+lottie = "6.7.1"
 desugaring = "2.1.5"
 
 [plugins]

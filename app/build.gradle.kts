@@ -1,4 +1,5 @@
 import com.android.build.gradle.AppExtension
+import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import java.io.FileNotFoundException
 import java.util.Properties
 
@@ -53,7 +54,7 @@ android {
         getByName("debug") {
             isDebuggable = true
 
-            firebaseCrashlytics {
+            configure<CrashlyticsExtension> {
                 mappingFileUploadEnabled = false
             }
         }
@@ -70,7 +71,7 @@ android {
                 null
             }
 
-            firebaseCrashlytics {
+            configure<CrashlyticsExtension> {
                 mappingFileUploadEnabled = true
             }
         }

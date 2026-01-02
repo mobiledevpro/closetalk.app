@@ -6,9 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -22,7 +20,6 @@ import com.mobiledevpro.main.view.vm.MainViewModel
 import com.mobiledevpro.sync.service.SyncDataService
 import com.mobiledevpro.ui.compositionlocal.LocalAnalytics
 import com.mobiledevpro.ui.theme.AppTheme
-import org.koin.compose.KoinContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.context.loadKoinModules
 
@@ -45,19 +42,15 @@ class MainActivity : ComponentActivity(), KoinComponent {
         setContent {
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-            var darkMode by remember { mutableStateOf(true) }
-
-            if (uiState is MainUIState.Success) {
-                (uiState as MainUIState.Success).settings.let {
-                    darkMode = it.darkMode
-                }
-            }
+            val darkMode by rememberUpdatedState(
+                newValue = if (uiState is MainUIState.Success) {
+                    (uiState as MainUIState.Success).settings.darkMode
+                } else true
+            )
 
             AppTheme(darkTheme = darkMode) {
-                KoinContext {
-                    CompositionLocalProvider(LocalAnalytics provides ImplAnalytics(firebaseAnalytics)) {
-                        MainApp()
-                    }
+                CompositionLocalProvider(LocalAnalytics provides ImplAnalytics(firebaseAnalytics)) {
+                    MainApp()
                 }
             }
         }
