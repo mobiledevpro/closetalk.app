@@ -25,8 +25,8 @@
 
 ## Apps built from this template: 
 - [Habit Tracker](https://www.instagram.com/stories/highlights/18330975238092077/) - Coming...
-- [Sign PDF - PDF Reader](https://play.google.com/store/apps/details?id=com.mobiledevpro.signpdf.pdfreader.app) - Sign PDF in a few seconds
-- [Screenshot Maker - NeonFrame](https://play.google.com/store/apps/details?id=com.mobiledevpro.neonframe.app) - Make eye-catching screenshots you share on Twitter, Instagram, and others.
+- [Sign PDF - PDF Reader](https://play.google.com/store/apps/details?id=com.mobiledevpro.signpdf.pdfreader.app&referrer=utm_source%3Dgithub%26utm_medium%3Dsocial%26utm_campaign%3Drepo_app_template) - Sign PDF in a few seconds
+- [Screenshot Maker - NeonFrame](https://play.google.com/store/apps/details?id=com.mobiledevpro.neonframe.app&referrer=utm_source%3Dgithub%26utm_medium%3Dsocial%26utm_campaign%3Drepo_app_template) - Make eye-catching screenshots you share on Twitter, Instagram, and others.
 
 
 
