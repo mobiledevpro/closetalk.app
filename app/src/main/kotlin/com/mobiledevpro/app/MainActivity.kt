@@ -2,6 +2,7 @@ package com.mobiledevpro.app
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.CompositionLocalProvider
@@ -38,6 +39,10 @@ class MainActivity : ComponentActivity(), KoinComponent {
 
         //False - allows to drawing the content "edge-to-edge"
         WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        //to support full screen mode without system bars
+        window.attributes.layoutInDisplayCutoutMode =
+            WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
 
         setContent {
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
