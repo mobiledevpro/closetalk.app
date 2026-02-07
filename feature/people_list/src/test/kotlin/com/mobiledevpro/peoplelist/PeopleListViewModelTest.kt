@@ -55,11 +55,8 @@ class PeopleListViewModelTest : KoinTest {
     private lateinit var vm: PeopleListViewModel
     private val database: AppDatabase by inject()
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Before
     fun setUp() {
-        Dispatchers.setMain(StandardTestDispatcher())
-
         val context = ApplicationProvider.getApplicationContext<Context>()
         startKoin {
             modules(
@@ -71,37 +68,46 @@ class PeopleListViewModelTest : KoinTest {
             )
         }
 
-
-        val useCase = GetPeopleListUseCase(database)
-        vm = PeopleListViewModel(getPeopleListUseCase = useCase)
-        assertTrue(
-            "Initial state is incorrect: ${vm.uiState.value}",
-            (vm.uiState.value as UIState) == PeopleProfileUIState.Loading
-        )
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun stateTest() = runTest {
-        vm.uiState.test {
-            testScheduler.advanceUntilIdle()
+        // Use the TestScope's scheduler so all test coroutines, VM and Turbine share it.
+        val scheduler = this.testScheduler
+        Dispatchers.setMain(StandardTestDispatcher(scheduler))
 
-            // Increase await timeout to 5s to avoid flaky timeouts
-            val item = withTimeout(5.seconds) { awaitItem() }
-
-            assertEquals(PeopleProfileUIState.Loading, item)
+        try {
+            val useCase = GetPeopleListUseCase(database)
+            vm = PeopleListViewModel(getPeopleListUseCase = useCase)
             assertTrue(
-                "People list success state expected, but was ${vm.uiState.value}",
-                (awaitItem() is PeopleProfileUIState.Success)
+                "Initial state is incorrect: ${vm.uiState.value}",
+                (vm.uiState.value as UIState) == PeopleProfileUIState.Loading
             )
 
-            cancelAndIgnoreRemainingEvents()
+            vm.uiState.test {
+                testScheduler.advanceUntilIdle()
+
+                // Increase await timeout to 5s to avoid flaky timeouts
+                val item = withTimeout(5.seconds) { awaitItem() }
+
+                assertEquals(PeopleProfileUIState.Loading, item)
+                assertTrue(
+                    "People list success state expected, but was ${vm.uiState.value}",
+                    (awaitItem() is PeopleProfileUIState.Success)
+                )
+
+                cancelAndIgnoreRemainingEvents()
+            }
+
+        } finally {
+            Dispatchers.resetMain()
         }
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @After
     fun finish() {
-        Dispatchers.resetMain()
         database.close()
         stopKoin()
     }
