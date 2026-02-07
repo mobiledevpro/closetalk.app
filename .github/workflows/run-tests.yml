@@ -53,7 +53,7 @@ jobs:
       # Run tests and merge all reports into a single one.
       # It requires to add a plugin to project level build.gradle: apply(plugin = "android-reporting")
       - name: Run Unit tests
-        run: ./gradlew test
+        run: ./gradlew test --no-daemon --max-workers=1 --no-parallel --stacktrace --info
 
       # Optional: Run instrumented tests (Requires Android Emulator)
       # - name: Run Instrumented Tests
