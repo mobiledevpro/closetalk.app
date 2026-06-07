@@ -1,7 +1,6 @@
 import dev.iurysouza.modulegraph.Orientation
 import dev.iurysouza.modulegraph.Theme
 
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
