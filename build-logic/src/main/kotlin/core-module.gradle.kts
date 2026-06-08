@@ -1,7 +1,5 @@
 plugins {
     id("com.android.library")
-    kotlin("android")
-    kotlin("kapt")
     id("kotlin-convention")
 }
 
@@ -17,10 +15,6 @@ android {
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
-    }
-
-    kotlin {
-        jvmToolchain(17)
     }
 
     flavorDimensions += listOf("default")
@@ -41,19 +35,19 @@ android {
     println("# Compose Compiler version: ${libs.versionStr("compose.compiler")}")
 }
 
+kotlin {
+    jvmToolchain(libs.versionInt("jdkVersion"))
+}
+
 android.sourceSets {
     getByName("main") {
-        kotlin.srcDir("src/main/kotlin")
-        res.srcDir("src/main/res")
+        kotlin.directories += "src/main/kotlin"
+        res.directories += "src/main/res"
     }
 
     getByName("production") {
-        kotlin.srcDir("src/production/kotlin")
-        res.srcDir("src/production/res")
-    }
-    getByName("dev") {
-        kotlin.srcDir("src/dev/kotlin")
-        res.srcDir("src/dev/res")
+        kotlin.directories += "src/production/kotlin"
+        res.directories += "src/production/res"
     }
 }
 

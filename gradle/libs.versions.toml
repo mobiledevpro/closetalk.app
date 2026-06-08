@@ -3,49 +3,50 @@
 app-version-code = "11"
 app-version-name = "0.1.0-alpha-11"
 sdk-min = "29"
-sdk-target = "36"
-sdk-compile = "36"
+sdk-target = "37"
+sdk-compile = "37"
+jdkVersion = "21"
 
 # Plugins
-android-gradle = "8.13.2"
-kotlin = "2.3.0"
-ksp = "2.2.20-2.0.3"
-kotlin-coroutines = "1.10.2"
+android-gradle = "9.2.1"
+kotlin = "2.4.0"
+ksp = "2.3.9"
+kotlin-coroutines = "1.11.0"
 kotlin-serialization = "1.4.1"
 google-services = "4.4.4"
-plugin-crashlytics = "3.0.6"
+plugin-crashlytics = "3.0.7"
 plugin-performance = "2.0.2"
-plugin-protobuf = "0.9.6"
+plugin-protobuf = "0.10.0"
 module-graph = "0.13.0"
 
 
 # Libs
-android-core-ktx = "1.17.0"
-activity = "1.12.3"
-navigation = "2.9.7"
+android-core-ktx = "1.19.0"
+activity = "1.13.0"
+navigation = "2.9.8"
 retrofit = "2.9.0"
 room = "2.8.4"
 lifecycle = "2.10.0"
-compose-bom = "2026.01.01"
+compose-bom = "2026.05.01"
 
 coil = "2.7.0"
 material3 = "1.4.0"
 material-icons-extended = "1.7.8"
-koin = "4.1.1"
-data-store = "1.2.0"
+koin = "4.2.1"
+data-store = "1.2.1"
 protobuf = "4.26.1" # keep 4.26.1 version , otherwise there is a duplicated classes in Firebase Firestore
-koin-compose = "4.1.1"
-coroutines-android = "1.10.2"
-workmanager = "2.11.1"
+koin-compose = "4.2.1"
+coroutines-android = "1.11.0"
+workmanager = "2.11.2"
 inapp-update = "2.1.0"
 splash-screen = "1.2.0"
 
 # Firebase
-firebase-bom = "34.9.0"
+firebase-bom = "34.14.0"
 
 # test libraries
 test-junit = "4.13.2"
-test-mockk = "1.14.7"
+test-mockk = "1.14.11"
 test-coroutines-flow = "1.2.1"
 
 # android test libraries
@@ -135,15 +136,15 @@ koin-test-junit = { module = "io.insert-koin:koin-test-junit4", version.ref = "k
 
 room = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-room-ktx = { module = "androidx.room:room-ktx", version = "room" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 
 # Firebase
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
-firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
-firebase-performance = { module = "com.google.firebase:firebase-perf" }
-firebase-messaging = { module = "com.google.firebase:firebase-messaging" }
-firebase-firestore = { module = "com.google.firebase:firebase-firestore" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
+firebase-performance = { group = "com.google.firebase", name = "firebase-perf" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore" }
 
 
 [bundles]
