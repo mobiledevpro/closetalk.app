@@ -212,8 +212,8 @@ androidComponents?.onVariants { variant ->
                 mapOf(
                     "variantName" to variantName,
                     "applicationId" to appId,
-                    "versionName" to (output.versionName.get()),
-                    "versionCode" to (output.versionCode.get().toString()),
+                    "versionName" to output.versionName.get(),
+                    "versionCode" to output.versionCode.get().toString(),
                     "buildType" to (buildType ?: ""),
                     "flavorName" to flavorName
                 )
