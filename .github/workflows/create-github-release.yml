@@ -23,6 +23,12 @@ jobs:
           name: bundles
           path: ${{ env.DOWNLOADS_PATH }}
 
+      - name: Download mapping from GitHub Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: mapping
+          path: ${{ env.DOWNLOADS_PATH }}
+
       - name: Download Release Notes from GitHub Artifacts
         uses: actions/download-artifact@v4
         with:
@@ -42,6 +48,19 @@ jobs:
           else
             echo "Found ${#aab_files[@]} .aab file(s) in ${DOWNLOADS_PATH}:"
             printf '%s\n' "${aab_files[@]}"
+          fi
+        continue-on-error: false
+
+      - name: Check mapping is downloaded
+        run: |
+          shopt -s nullglob
+          mapping_files=(${DOWNLOADS_PATH}/*/mapping.txt)
+          if [ ${#mapping_files[@]} -eq 0 ]; then
+            echo "No mapping files found in ${DOWNLOADS_PATH}"
+            exit 1
+          else
+            echo "Found ${#mapping_files[@]} mapping file(s) in ${DOWNLOADS_PATH}:"
+            printf '%s\n' "${mapping_files[@]}"
           fi
         continue-on-error: false
 

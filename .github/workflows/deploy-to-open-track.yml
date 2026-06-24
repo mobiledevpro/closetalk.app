@@ -55,6 +55,20 @@ jobs:
           fi
         continue-on-error: false
 
+      - name: Check mapping is downloaded
+        run: |
+          shopt -s nullglob
+          mapping_files=(${DOWNLOADS_PATH}/*/mapping.txt)
+          if [ ${#mapping_files[@]} -eq 0 ]; then
+            echo "No mapping files found in ${DOWNLOADS_PATH}"
+            exit 1
+          else
+            echo "Found ${#mapping_files[@]} mapping file(s) in ${DOWNLOADS_PATH}:"
+            printf '%s\n' "${mapping_files[@]}"
+            echo "MAPPING_FILE=${mapping_files[@]}" >> $GITHUB_ENV
+          fi
+        continue-on-error: false
+
       - name: Copy Release Notes
         run: |
           mkdir -p ${DOWNLOADS_PATH}/whatsnew &&
@@ -69,7 +83,7 @@ jobs:
           packageName: com.mobiledevpro.closetalk.app
           releaseFiles: ${{ env.AAB_FILE }}
           # Upload the mapping file
-          mappingFile: ${{ env.DOWNLOADS_PATH }}/mapping.txt
+          mappingFile: ${{ env.MAPPING_FILE }}
           # Can be 'internal', 'alpha', 'beta', or 'production', or 'internalsharing'
           track: beta
           # Optional: 'completed', 'draft', 'inProgress', or 'halted'
