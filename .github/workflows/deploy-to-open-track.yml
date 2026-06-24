@@ -26,6 +26,12 @@ jobs:
           name: bundles
           path: ${{ env.DOWNLOADS_PATH }}
 
+      - name: Download mapping from GitHub Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: mapping
+          path: ${{ env.DOWNLOADS_PATH }}
+
       - name: Download Release Notes from GitHub Artifacts
         uses: actions/download-artifact@v4
         with:
@@ -62,6 +68,8 @@ jobs:
           # Replace with your package name
           packageName: com.mobiledevpro.closetalk.app
           releaseFiles: ${{ env.AAB_FILE }}
+          # Upload the mapping file
+          mappingFile: ${{ env.DOWNLOADS_PATH }}/mapping.txt
           # Can be 'internal', 'alpha', 'beta', or 'production', or 'internalsharing'
           track: beta
           # Optional: 'completed', 'draft', 'inProgress', or 'halted'

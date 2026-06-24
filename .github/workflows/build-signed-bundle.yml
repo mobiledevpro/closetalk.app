@@ -120,5 +120,12 @@ jobs:
           name: bundles
           path: ./app/build/outputs/bundle/*/*-release.aab
 
+      - name: Upload Mapping File to GitHub Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: mapping
+          # Adjust path if using a different flavor (e.g., productionRelease)
+          path: ./app/build/outputs/mapping/*/*-mapping.aab
+
       - name: Check Build Status = ${{ job.status }}
         run: echo "Build status report=${{ job.status }}."

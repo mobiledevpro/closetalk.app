@@ -74,6 +74,11 @@ android {
             configure<CrashlyticsExtension> {
                 mappingFileUploadEnabled = true
             }
+
+            // This packs native symbols into the AAB, allowing Google Play to symbolicate native crashes
+            ndk {
+                debugSymbolLevel = "full"
+            }
         }
     }
 
