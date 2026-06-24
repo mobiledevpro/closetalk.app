@@ -125,7 +125,7 @@ jobs:
         with:
           name: mapping
           # Adjust path if using a different flavor (e.g., productionRelease)
-          path: ./app/build/outputs/mapping/*/*-mapping.aab
+          path: ./app/build/outputs/mapping/*/*-mapping.txt
 
       - name: Check Build Status = ${{ job.status }}
         run: echo "Build status report=${{ job.status }}."
