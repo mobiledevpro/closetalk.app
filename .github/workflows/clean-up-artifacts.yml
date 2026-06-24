@@ -13,6 +13,7 @@ jobs:
         with:
           name: |
             bundles
+            mapping
             release_notes
             google_service_json
           failOnError: false

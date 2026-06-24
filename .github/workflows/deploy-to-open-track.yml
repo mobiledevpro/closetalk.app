@@ -85,7 +85,7 @@ jobs:
           # Upload the mapping file
           mappingFile: ${{ env.MAPPING_FILE }}
           # Can be 'internal', 'alpha', 'beta', or 'production', or 'internalsharing'
-          track: beta
+          tracks: beta
           # Optional: 'completed', 'draft', 'inProgress', or 'halted'
           status: completed
           whatsNewDirectory: ${{ env.DOWNLOADS_PATH }}/whatsnew
