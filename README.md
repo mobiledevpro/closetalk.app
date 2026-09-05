@@ -204,16 +204,20 @@ moduleGraphConfig {
   <img src="https://s.gravatar.com/avatar/72c649d298a8f0f088fd0850e19b9147?s=400" width="70" align="left">
 </a>
 
-**Dmitri Chernysh**
+### Dmitri Chernysh
 
-<a href="https://mobile-dev.pro/?utm_source=gh_closetalk&utm_medium=social&utm_campaign=portfolio"><img src="https://img.shields.io/badge/Portfolio-029791?style=for-the-badge" /></a>
-<a href="https://www.upwork.com/services/product/development-it-dmitriy-2014048029086121797"><img src="https://img.shields.io/badge/book%20consultation-14a800?style=for-the-badge" /></a>
-<a href="https://www.upwork.com/services/product/development-it-dmitriy-2014048029086121797"><img src="https://img.shields.io/badge/Join%20Dev%20Notes-f2a09b?style=for-the-badge" /></a>
-[![Youtube](https://img.shields.io/badge/-youtube-red?logo=youtube&message=Youtube&style=for-the-badge)](https://www.youtube.com/@mobiledevpro?sub_confirmation=1&utm_source=github_main_profile)
+**Senior Android Engineer & Tech Partner (10+ yrs)**
+
+Specialized in Native Android (Kotlin + Jetpack Compose) and on-device AI/LLM.
+
+Need help with buіlding, scaling or maintaining Android apps?
+
+<a href="https://www.upwork.com/services/product/development-it-dmitriy-2014048029086121797"><img src="https://img.shields.io/badge/book%201:1%20consultation-14a800?style=for-the-badge" />
+
+<a href="https://mobile-dev.pro/?utm_source=gh_closetalk&utm_medium=social&utm_campaign=portfolio"><img src="https://img.shields.io/badge/mobile--dev.pro-029791?style=for-the-badge" />
 [![Linkedin](https://img.shields.io/badge/-linkedin-0A66C2?logo=linkedin&logoColor=white&style=for-the-badge)](https://www.linkedin.com/in/dmitriychernysh/)
-[![Instagram](https://img.shields.io/badge/-instagram-E4405F?logo=instagram&message=Tech+insights+on&logoColor=white&style=for-the-badge)](https://www.instagram.com/mobiledevpro/)
-
-
+[![Youtube](https://img.shields.io/badge/-youtube-red?logo=youtube&message=Youtube&style=for-the-badge)](https://www.youtube.com/@mobiledevpro?sub_confirmation=1&utm_source=github_main_profile)
+[![Email](https://img.shields.io/badge/-Email-17273D?style=for-the-badge&logo=gmail&logoColor=white)](mailto:dmitriy.chernysh@mobile-dev.pro)
 
 ## License:
 
