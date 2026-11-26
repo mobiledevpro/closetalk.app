@@ -83,7 +83,7 @@ dependencies.
 ### Version Management
 
 - **`gradle/libs.versions.toml`**: Single source for all versions (Kotlin 2.4, Compose BOM
-  2026.05.01, AGP 9.2.1, Koin 4.2.1, Room 2.8.4, Firebase BOM 34.14.0)
+  2026.11.01, AGP 9.5.3, Koin 4.2.2, Room 2.8.5, Firebase BOM 35.2.0)
 - Release versions in `gradle/libs.versions.toml` (`app-version-code`, `app-version-name`)
 
 ### Build Variants

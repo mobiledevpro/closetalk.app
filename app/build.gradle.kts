@@ -14,7 +14,11 @@ plugins {
 
 android {
     namespace = "com.mobiledevpro.apptemplate.compose"
-    compileSdk = libs.versions.sdk.compile.get().toInt()
+    compileSdk {
+        version = release(libs.versions.sdk.compile.asProvider().get().toInt()) {
+            minorApiLevel = libs.versions.sdk.compile.minor.get().toInt()
+        }
+    }
 
 
     defaultConfig {

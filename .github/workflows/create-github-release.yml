@@ -73,12 +73,10 @@ jobs:
 
       - name: Create GitHub Release
         id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Provided by Actions, no need to create this secret yourself
+        uses: softprops/action-gh-release@v3
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
           body: ${{ env.RELEASE_NOTES }}
           draft: false
           prerelease: false

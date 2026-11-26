@@ -7,7 +7,11 @@ val projectName = project.name.replace("_", ".")
 
 android {
     namespace = "com.mobiledevpro.$projectName"
-    compileSdk = libs.versionInt("sdk.compile")
+    compileSdk {
+        version = release(libs.versionInt("sdk.compile")) {
+            minorApiLevel = libs.versionInt("sdk.compile.minor")
+        }
+    }
 
     defaultConfig {
         minSdk = libs.versionInt("sdk.min")
@@ -30,7 +34,7 @@ android {
     }
 
     println("# Namespace: $projectName")
-    println("# Compile SDK version: ${libs.versionStr("sdk.compile")}")
+    println("# Compile SDK version: ${libs.versionStr("sdk.compile")}.${libs.versionStr("sdk.compile.minor")}")
     println("# Min SDK version: ${libs.versionStr("sdk.min")}")
     println("# Compose Compiler version: ${libs.versionStr("compose.compiler")}")
 }

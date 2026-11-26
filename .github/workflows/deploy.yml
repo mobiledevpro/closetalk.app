@@ -12,27 +12,28 @@ jobs:
 
   create-release-notes:
     uses: ./.github/workflows/create-release-notes.yml
-    secrets: inherit
 
   create-service-json:
     uses: ./.github/workflows/create-service-json.yml
     needs: create-release-notes
-    secrets: inherit
+    secrets:
+      GOOGLE_SERVICE_JSON: ${{ secrets.GOOGLE_SERVICE_JSON }}
 
   build-signed-bundle:
     uses: ./.github/workflows/build-signed-bundle.yml
     needs: create-service-json
-    secrets: inherit
+    secrets:
+      KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
 
   create-github-release:
     uses: ./.github/workflows/create-github-release.yml
     needs: build-signed-bundle
-    secrets: inherit
 
   deploy-to-production-track:
     uses: ./.github/workflows/deploy-to-open-track.yml
     needs: build-signed-bundle
-    secrets: inherit
+    secrets:
+      SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
 
   # It allows to remove artifacts created to use between workflows (google service json, bundles, etc)
   remove-artifacts:
@@ -40,4 +41,3 @@ jobs:
     needs: deploy-to-production-track
     # Run this job even if "needs" job is failed
     if: success() || failure()
-    secrets: inherit

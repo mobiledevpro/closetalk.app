@@ -4,9 +4,9 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/mobiledevpro/closetalk.app/badge)](https://www.codefactor.io/repository/github/mobiledevpro/closetalk.app)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mobiledevpro_Jetpack-Compose-ChatApp-Template&metric=alert_status)](https://sonarcloud.io/dashboard?id=mobiledevpro_Jetpack-Compose-ChatApp-Template)
 
-[![Kotlin Version](https://img.shields.io/badge/Kotlin-2.4.0-blue.svg?style=flat-square)](http://kotlinlang.org/)
-[![Compose Bom](https://img.shields.io/badge/Compose%20Bom-2026.05.01-blue.svg?style=flat-square)]([http://kotlinlang.org/](https://developer.android.com/jetpack/compose/bom/bom-mapping))
-[![Gradle Plugin](https://img.shields.io/badge/Gradle-9.2.1-blue.svg?style=flat-square)](https://developer.android.com/build/releases/gradle-plugin)
+[![Kotlin Version](https://img.shields.io/badge/Kotlin-2.4.21-blue.svg?style=flat-square)](http://kotlinlang.org/)
+[![Compose Bom](https://img.shields.io/badge/Compose%20Bom-2026.11.01-blue.svg?style=flat-square)](https://developer.android.com/jetpack/compose/bom/bom-mapping)
+[![Gradle Plugin](https://img.shields.io/badge/Gradle-9.5.3-blue.svg?style=flat-square)](https://developer.android.com/build/releases/gradle-plugin)
 [![API](https://img.shields.io/badge/Min%20SDK-29%20[Android%2010]-blue.svg?style=flat-square)](https://github.com/AndroidSDKSources/android-sdk-sources-list)
 [![Target SDK](https://img.shields.io/badge/Target%20SDK-37%20[Android%2017]-blue.svg?style=flat-square)](https://developer.android.com/about/versions/17)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square)](http://www.apache.org/licenses/LICENSE-2.0)
@@ -40,7 +40,7 @@
 * [Koin](https://insert-koin.io/docs/reference/koin-android/compose) for dependency injection
 * [Coil](https://coil-kt.github.io/coil/compose/) for image loading
 * MVI + modularization with a clean architecture
-* GitHub Actions [Complete Guide](https://www.patreon.com/mobiledevpro/shop/power-of-github-actions-complete-guide-943321)
+* GitHub Actions [Complete Guide](https://www.patreon.com/mobiledevpro/posts/power-of-github-147961648)
 
 
 ## Speed up Gradle build time

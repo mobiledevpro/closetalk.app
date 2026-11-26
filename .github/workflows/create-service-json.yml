@@ -3,6 +3,9 @@ name: Create Google Service JSON
 on:
   # Enables this workflow to be called from other workflows
   workflow_call:
+    secrets:
+      GOOGLE_SERVICE_JSON:
+        required: true
 
 jobs:
   create-service-json:

@@ -15,12 +15,12 @@ jobs:
 
   create-service-json:
     uses: ./.github/workflows/create-service-json.yml
-    secrets: inherit
+    secrets:
+      GOOGLE_SERVICE_JSON: ${{ secrets.GOOGLE_SERVICE_JSON }}
 
   run-tests:
     uses: ./.github/workflows/run-tests.yml
     needs: create-service-json
-    secrets: inherit
 
   # It allow to remove artifacts created to use between workflows (google service json, bundles, etc)
   remove-artifacts:
@@ -28,4 +28,3 @@ jobs:
     needs: run-tests
     # Run this job even if "needs" job is failed
     if: success() || failure()
-    secrets: inherit
