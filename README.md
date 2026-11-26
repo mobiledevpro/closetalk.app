@@ -20,9 +20,6 @@
 ##
 ![closetalk_github_social_preview](https://github.com/mobiledevpro/closetalk.app/assets/5750211/343f1ab5-54e4-41c2-a554-af0526aee382)
 
-[![Youtube](https://img.shields.io/badge/-youtube-red?logo=youtube&message=Youtube&style=for-the-badge&label=Watch+on)](https://www.youtube.com/playlist?list=PL9IBbMupfHWrW419OtGlzc7cBEMNqyLa4)
-
-
 ## Apps built from this template: 
 - [Play Pricing](https://playpricing.dev/?utm_source=gh_closetalk&utm_medium=social&utm_campaign=app) - Fix regional pricing to maximize global app revenue
 - [Sign PDF - PDF Reader](https://play.google.com/store/apps/details?id=com.mobiledevpro.signpdf.pdfreader.app&referrer=utm_source%3Dgithub%26utm_medium%3Dsocial%26utm_campaign%3Drepo_app_template) - Sign PDF in a few seconds
